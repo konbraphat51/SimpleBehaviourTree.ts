@@ -3,3 +3,4 @@
  */
 
 export * from './BehaviorTree';
+export * from './Nodes';
