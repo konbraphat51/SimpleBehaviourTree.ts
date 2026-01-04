@@ -7,7 +7,7 @@ import { IBehaviorNode, IObservation, IAction, NodeStatus } from './BehaviorTree
 /**
  * Action result that includes both the action data and the node status
  */
-export interface IActionResult<A extends IAction = IAction> extends IAction {
+export interface IActionResult<A extends IAction = IAction> {
   status: NodeStatus;
   action?: A;
 }
@@ -22,6 +22,10 @@ export class SequenceNode<O extends IObservation = IObservation, A extends IActi
   constructor(private children: IBehaviorNode<O, IActionResult<A>>[]) {}
 
   tick(observation: O): IActionResult<A> {
+    if (this.children.length === 0) {
+      return { status: NodeStatus.SUCCESS };
+    }
+    
     let lastResult: IActionResult<A> = { status: NodeStatus.SUCCESS };
     for (const child of this.children) {
       const result = child.tick(observation);
@@ -44,6 +48,10 @@ export class SelectorNode<O extends IObservation = IObservation, A extends IActi
   constructor(private children: IBehaviorNode<O, IActionResult<A>>[]) {}
 
   tick(observation: O): IActionResult<A> {
+    if (this.children.length === 0) {
+      return { status: NodeStatus.FAILURE };
+    }
+    
     let lastResult: IActionResult<A> = { status: NodeStatus.FAILURE };
     for (const child of this.children) {
       const result = child.tick(observation);
