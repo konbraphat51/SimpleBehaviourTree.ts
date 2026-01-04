@@ -50,7 +50,7 @@ export class BehaviorTree<O extends IObservation = IObservation, A extends IActi
   /**
    * Execute one tick of the behavior tree
    * @param observation - The observation data for this tick
-   * @returns The action to be executed, or null if no root is set
+   * @returns The action to be executed
    * @throws Error if no root node is set
    */
   public tick(observation: O): A {
