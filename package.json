@@ -1,0 +1,30 @@
+{
+  "name": "simple-behaviour-tree",
+  "version": "0.1.0",
+  "description": "A simple behavior tree implementation in TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "pnpm run clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "behavior-tree",
+    "behaviour-tree",
+    "typescript",
+    "ai",
+    "decision-making"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.27.0",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "^5.9.3"
+  }
+}
